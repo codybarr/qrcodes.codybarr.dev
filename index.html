@@ -6,14 +6,32 @@
     <script src="https://unpkg.com/htmx.org@1.7.0"></script>
   </head>
   <body>
-    <main class="flex flex-col gap-6 p-6 text-center">
+    <main class="flex flex-col gap-6 p-6">
       <h1 class="text-3xl font-bold">QR Code Generator</h1>
-      <form hx-post="/api/generate" hx-target="#qr-code">
-        <label for="url">Enter URL:</label>
-        <input type="text" id="url" name="url" required />
-        <button type="submit">Generate</button>
+      <form class="flex gap-3" hx-post="/api/generate" hx-target="#qr-code">
+        <input
+          class="border-2 rounded px-2 py-1"
+          placeholder="Enter URL"
+          type="text"
+          id="url"
+          name="url"
+          required
+        />
+        <button
+          class="bg-white border-2 border-black text-black hover:bg-gray-200 transition px-2 py-1"
+          type="submit"
+        >
+          Generate
+        </button>
       </form>
-      <div id="qr-code"></div>
+      <div id="qr-code">
+        <img
+          class="htmx-indicator"
+          src="loading.svg"
+          width="250"
+          height="250"
+        />
+      </div>
     </main>
     <script type="module" src="/src/main.ts"></script>
   </body>
