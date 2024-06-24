@@ -8,7 +8,12 @@
   <body>
     <main class="flex flex-col gap-6 p-6">
       <h1 class="text-3xl font-bold">QR Code Generator</h1>
-      <form class="flex gap-3" hx-post="/api/generate" hx-target="#qr-code">
+      <form
+        class="flex gap-3"
+        hx-post="/api/generate"
+        hx-target="#qr-code"
+        hx-indicator="#spinner"
+      >
         <input
           class="border-2 rounded px-2 py-1"
           placeholder="Enter URL"
@@ -26,7 +31,8 @@
       </form>
       <div id="qr-code">
         <img
-          class="htmx-indicator"
+          id="spinner"
+          class="htmx-indicator transition"
           src="loading.svg"
           width="250"
           height="250"
